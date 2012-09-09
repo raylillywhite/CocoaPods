@@ -1,4 +1,3 @@
-require 'xcodeproj/config'
 require 'active_support/core_ext/string/strip.rb'
 
 module Pod
@@ -51,7 +50,6 @@ module Pod
           compiler_flags ].each do |attr|
         instance_variable_set( "@#{attr}", { :ios => [], :osx => [] } )
       end
-      @xcconfig     = { :ios => Xcodeproj::Config.new, :osx => Xcodeproj::Config.new }
       @header_dir   = { :ios => nil, :osx => nil }
       @requires_arc = { :ios => nil, :osx => nil }
 
@@ -128,7 +126,6 @@ module Pod
           resources=
           preserve_paths=
           preserve_path=
-          xcconfig=
           framework=
           frameworks=
           weak_framework=
@@ -298,23 +295,6 @@ module Pod
     def header_dir
       @header_dir[active_platform] || (@parent.header_dir if @parent) || Pathname.new('')
     end
-
-    # @!method xcconfig=
-    #
-    platform_attr_writer :xcconfig, lambda {|value, current| current.tap { |c| c.merge!(value) } }
-
-    def xcconfig
-      result = raw_xconfig.dup
-      result.libraries.merge(libraries)
-      result.frameworks.merge(frameworks)
-      result.weak_frameworks.merge(weak_frameworks)
-      result
-    end
-
-    def raw_xconfig
-      @parent ? @parent.raw_xconfig.merge(@xcconfig[active_platform]) : @xcconfig[active_platform]
-    end
-
 
     def compiler_flags
       if @parent
