@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
-$:.unshift File.expand_path('../lib', __FILE__)
-require 'cocoapods'
+#$:.unshift File.expand_path('../lib', __FILE__)
+#require 'cocoapods'
 
 Gem::Specification.new do |s|
   s.name     = "cocoapods"
-  s.version  = Pod::VERSION
+  s.version  = "0.14.0.rc2.ray"
   s.date     = Date.today
   s.license  = "MIT"
   s.email    = "eloy.de.enige@gmail.com"
