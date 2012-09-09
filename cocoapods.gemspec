@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'faraday',       '~> 0.8.1'
   s.add_runtime_dependency 'octokit',       '~> 1.7'
 
-  s.add_runtime_dependency 'colored',       '~> 1.2'
+#  s.add_runtime_dependency 'colored',       '~> 1.2'
   s.add_runtime_dependency 'escape',        '~> 0.0.4'
   s.add_runtime_dependency 'json',          '~> 1.7.3'
   s.add_runtime_dependency 'open4',         '~> 1.3.0'
